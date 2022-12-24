@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // import { Button } from '../ui/button/Button';
 import IButton from '@mui/material/Button';
 import ISendIcon from '@mui/icons-material/Send';
@@ -7,7 +7,7 @@ import './style/Form.css';
 
 export function Form({ addMessage }) {
     const [text, setText] = useState('');
-    const [autoFocus, setAutoFocus] = useState(true);
+    const inputRef = useRef(null);
 
 
     const handleSubmit = (e) => {
@@ -20,7 +20,7 @@ export function Form({ addMessage }) {
     }
 
     useEffect(() => {
-        setAutoFocus();
+        inputRef.current.querySelector('input').focus();
     }, [addMessage]);
 
     return (
@@ -29,7 +29,7 @@ export function Form({ addMessage }) {
                 id="outlined-basic"
                 label="Message"
                 value={text}
-                autoFocus={autoFocus}
+                ref={inputRef}
                 onChange={(e) => setText(e.target.value)}
             />
             <br />
