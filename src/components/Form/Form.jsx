@@ -1,9 +1,14 @@
-import { useState } from 'react';
-import { Button } from '../ui/button/Button';
+import { useEffect, useState } from 'react';
+// import { Button } from '../ui/button/Button';
+import IButton from '@mui/material/Button';
+import ISendIcon from '@mui/icons-material/Send';
+import ITextField from '@mui/material/TextField';
 import './style/Form.css';
 
 export function Form({ addMessage }) {
     const [text, setText] = useState('');
+    const [autoFocus, setAutoFocus] = useState(true);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,14 +19,28 @@ export function Form({ addMessage }) {
         setText('');
     }
 
+    useEffect(() => {
+        setAutoFocus();
+    }, [addMessage]);
+
     return (
         <form className='Form' onSubmit={handleSubmit}>
-            <input className='Form__text'
-                placeholder='Message'
+            <ITextField
+                id="outlined-basic"
+                label="Message"
                 value={text}
-                onChange={(e) => setText(e.target.value)} />
-            <Button className='Form__btn Button'
-                type='submit'>Отправить</Button>
+                autoFocus={autoFocus}
+                onChange={(e) => setText(e.target.value)}
+            />
+            <br />
+            <div className="Form__btn">
+                <IButton
+                    variant="contained"
+                    endIcon={<ISendIcon />}
+                    type='submit'>
+                    Send message</IButton>
+            </div>
+
         </form>
     );
 }
