@@ -1,9 +1,23 @@
 .MessageList {
+  display: flex;
+  justify-content: center;
+}
+.MessageList__box {
+  margin-top: 50px;
+}
+.MessageList__chat {
   margin-left: 50px;
+}
+.MessageList__h {
+  width: 320px;
+  margin-bottom: 30px;
+  color: #1976d2;
+}
+.MessageList__text {
   font-size: 21px;
   color: #ffffff;
   width: 300px;
-  background-color: grey;
+  background-color: #619dd9;
   padding: 5px 10px;
   border-radius: 3px;
   margin-bottom: 10px;
