@@ -1,0 +1,11 @@
+.ChoiceChat {
+  margin-left: 600px;
+  width: 100px;
+}
+.ChoiceChat a {
+  text-decoration: none;
+  color: black;
+}
+.ChoiceChat a:hover {
+  color: #3276c3;
+}/*# sourceMappingURL=ChoiceChat.module.css.map */
