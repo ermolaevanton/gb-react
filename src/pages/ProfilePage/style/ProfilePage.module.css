@@ -2,4 +2,19 @@
   text-align: center;
   margin-top: 50px;
   color: #3276c3;
+}
+
+.box {
+  width: 70px;
+  margin: 50px auto;
+}
+
+.checkbox {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.text {
+  font-size: 20px;
+  color: #3276c3;
 }/*# sourceMappingURL=ProfilePage.module.css.map */
