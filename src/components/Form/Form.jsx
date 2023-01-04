@@ -3,18 +3,19 @@ import IButton from '@mui/material/Button';
 import ISendIcon from '@mui/icons-material/Send';
 import ITextField from '@mui/material/TextField';
 import './style/Form.css';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../../store/message/action';
+import { useParams } from 'react-router-dom';
 
-export function Form({ addMessage }) {
+export function Form() {
     const [text, setText] = useState('');
     const inputRef = useRef(null);
-
+    const dispatch = useDispatch();
+    const { chatName } = useParams();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addMessage({
-            author: 'user',
-            text: text
-        });
+        dispatch(addMessage(chatName, text));
         setText('');
     }
 

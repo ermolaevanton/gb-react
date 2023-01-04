@@ -1,5 +1,6 @@
 .Form {
   max-width: 300px;
+  margin-top: 25px;
 }
 .Form__text {
   width: 300px;
