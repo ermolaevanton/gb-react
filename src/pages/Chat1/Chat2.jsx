@@ -24,8 +24,8 @@ export function Chat2() {
     }, [messageList])
     return (
         <div className={styles.MessageList__chat}>
-            <Form addMessage={addMessage} />
             <MessageList messageList={messageList} chat='2' />
+            <Form addMessage={addMessage} />
         </div>
     )
 }

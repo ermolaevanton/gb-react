@@ -1,15 +1,16 @@
-.MessageList {
-  display: flex;
-  justify-content: center;
-}
 .MessageList__box {
   margin-top: 50px;
 }
 .MessageList__chat {
-  margin-left: 50px;
   outline: 3px solid #619dd9;
   padding: 10px;
   border-radius: 3px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 300px;
+  overflow: auto;
 }
 .MessageList__h {
   width: 300px;
@@ -20,7 +21,7 @@
 .MessageList__text {
   font-size: 21px;
   color: #ffffff;
-  width: 300px;
+  width: 280px;
   background-color: #619dd9;
   padding: 5px 10px;
   border-radius: 3px;

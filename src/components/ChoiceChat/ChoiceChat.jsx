@@ -1,49 +1,45 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
+import { addChat, deleteChat } from '../../store/message/action';
+import { selectChat } from '../../store/message/selectors';
 import styles from './style/ChoiceChat.module.css';
 
 export function ChoiceChat() {
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [value, setValue] = useState('');
+    const dispatch = useDispatch();
+    const chats = useSelector(selectChat);
 
-    const handleListItemClick = (event, index) => {
-        setSelectedIndex(index);
-    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addChat(value));
+        setValue('');
+    }
 
     return (
         <>
             <div className={styles.ChoiceChat}>
-                <Box sx={{
-                    width: '100%',
-                    maxWidth: 360,
-                    bgcolor: 'background.paper'
-                }}>
-                    <List component="nav"
-                        aria-label="secondary mailbox folder">
-                        <Link to='chat1'>
-                            <ListItemButton
-                                selected={selectedIndex === 1}
-                                onClick={(event) =>
-                                    handleListItemClick(event, 1)}
-                            >
-                                <ListItemText primary="Chat 1" />
-                            </ListItemButton>
-                        </Link>
-                        <Link to='chat2'>
-                            <ListItemButton
-                                selected={selectedIndex === 2}
-                                onClick={(event) =>
-                                    handleListItemClick(event, 2)}
-                            >
-                                <ListItemText primary="Chat 2" />
-                            </ListItemButton>
-                        </Link>
-                    </List>
-                </Box>
+                <form onSubmit={handleSubmit}>
+                    <input type="text"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                    />
+                    <button type='submit'>Create chat</button>
+                </form>
             </div>
+            <ul>
+                {chats.map((chat) => (
+                    <li key={chat.id}>
+                        <Link to={`/chats/${chat.name}`} >
+                            {chat.name}
+                        </Link>
+                        <button
+                            onClick={() => dispatch(deleteChat(chat.name))}
+                        >X</button>
+                    </li>
+                ))}
+            </ul>
             <Outlet />
         </>
     )

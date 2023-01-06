@@ -1,0 +1,1 @@
+export const selectName = ((store) => store.profile.name);
