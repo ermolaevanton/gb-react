@@ -16,3 +16,16 @@ export const addMessage = (chatName, text) => ({
     type: ADD_MESSAGE,
     payload: { chatName, text }
 })
+
+export const addMessageBot = (chatName, text) => (dispatch) => {
+    dispatch(addMessage(chatName, text));
+
+    if (text.author !== 'bot') {
+        setTimeout(() => {
+            dispatch(addMessage(chatName, {
+                author: 'bot',
+                text: '-------------'
+            }))
+        }, 1000);
+    }
+}
