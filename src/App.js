@@ -5,9 +5,9 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
-
 import { store, persistor } from "./store";
 import { ChatPage } from "./pages/ChatPage/ChatPage";
+import { ArticlePage } from "./pages/ArticlePage/ArticlePage";
 
 export function App() {
 
@@ -23,6 +23,7 @@ export function App() {
                                 element={<ChatPage />}
                             />
                         </Route>
+                        <Route path="article" element={<ArticlePage />} />
                     </Route>
                     <Route path="*" element={<h1>404 Page not found</h1>} />
                 </Routes>
