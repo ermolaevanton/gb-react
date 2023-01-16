@@ -7,8 +7,11 @@ import ISendIcon from '@mui/icons-material/Send';
 import ITextField from '@mui/material/TextField';
 
 import './style/Form.css';
-import { addMessageBot } from '../../store/message/action';
+import { addMessage } from '../../store/message/action';
 import { selectName } from '../../store/profile/selectors';
+
+import { push } from "firebase/database";
+import { getMessageListById } from '../../services/firebase'
 
 export function Form() {
     const [text, setText] = useState('');
@@ -19,10 +22,14 @@ export function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addMessageBot(chatName, {
+        dispatch(addMessage(chatName, {
             author: name,
             text
         }));
+        push(getMessageListById(chatName), {
+            author: name,
+            text
+        });
         setText('');
     }
 
