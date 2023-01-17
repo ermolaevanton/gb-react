@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
+import { logOut } from "../../services/firebase";
+import { selectAuth } from "../../store/profile/selectors";
 import classes from "./style/Header.module.css";
 
-export const navigate = [
+export const navigates = [
     {
         id: 1,
         name: 'Main',
@@ -23,13 +26,23 @@ export const navigate = [
         to: 'article'
     }
 ]
+
+
+
 export function Header() {
+    const isAuth = useSelector(selectAuth);
+
+
+    const handleLogout = async () => {
+        await logOut();
+    }
+
     return (
         <>
             <header className={classes.header}>
-                <nav>
+                <nav className={classes.header__nav}>
                     <ul>
-                        {navigate.map((item) => (
+                        {navigates.map((item) => (
                             <li key={item.id}>
                                 <NavLink
                                     to={item.to}
@@ -44,6 +57,26 @@ export function Header() {
                         ))}
                     </ul>
                 </nav>
+                {!isAuth && (
+                    <>
+                        <NavLink
+                            className={classes.header__login}
+                            to={'login'}
+                            style={({ isActive }) => ({
+                                borderBottom: isActive ?
+                                    '2px solid #fff' : 'none'
+                            })}
+                        >Login</NavLink>
+                        <NavLink
+                            to={'registration'}
+                            style={({ isActive }) => ({
+                                borderBottom: isActive ?
+                                    '2px solid #fff' : 'none'
+                            })}
+                        >Registration</NavLink>
+                    </>
+                )}
+                {isAuth && (<NavLink onClick={handleLogout}>Logout</NavLink>)}
             </header>
             <main><Outlet /></main>
         </>

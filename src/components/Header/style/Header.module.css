@@ -20,4 +20,10 @@
 }
 .header a:hover {
   color: #d5d5d5;
+}
+.header__nav {
+  margin-right: 20%;
+}
+.header__login {
+  margin-right: 10px;
 }/*# sourceMappingURL=Header.module.css.map */

@@ -1,8 +1,9 @@
-import { CHANGE_NAME } from "./action";
+import { CHANGE_NAME, IS_AUTH } from "./action";
 
 
 const initialState = {
     name: '',
+    isAuth: false
 }
 
 export const profileReducer = (state = initialState, action) => {
@@ -13,6 +14,13 @@ export const profileReducer = (state = initialState, action) => {
                 ...state,
                 name: payload
             }
+
+        case IS_AUTH:
+            return {
+                ...state,
+                isAuth: payload
+            }
+
         default:
             return state;
     }

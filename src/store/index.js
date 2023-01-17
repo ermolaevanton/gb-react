@@ -9,7 +9,7 @@ import { profileReducer } from "./profile/reducer";
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['messages']
+    blacklist: ['messages', 'profile']
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
