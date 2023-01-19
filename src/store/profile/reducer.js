@@ -1,7 +1,7 @@
 import { CHANGE_NAME, IS_AUTH } from "./action";
 
 
-const initialState = {
+export const initialState = {
     name: '',
     isAuth: false
 }

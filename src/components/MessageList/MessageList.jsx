@@ -5,7 +5,6 @@ import './style/MessageList.css'
 
 
 export function MessageList({ messages }) {
-    console.log("🚀 ~ file: MessageList.jsx:8 ~ MessageList ~ messages", messages)
     const { chatName } = useParams();
 
     return (

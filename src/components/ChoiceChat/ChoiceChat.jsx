@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
-import { addChat, deleteChat } from '../../store/message/action';
-import { selectChat } from '../../store/message/selectors';
+import { addChat } from '../../store/message/action';
 import styles from './style/ChoiceChat.module.css';
 import { push, set, remove } from "firebase/database";
 import { messagesRef, getChatById, getMessageListById } from '../../services/firebase';
@@ -10,8 +9,6 @@ import { messagesRef, getChatById, getMessageListById } from '../../services/fir
 export function ChoiceChat({ messagesDB, chats }) {
     const [value, setValue] = useState('');
     const dispatch = useDispatch();
-    // const chats = useSelector(selectChat);
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
