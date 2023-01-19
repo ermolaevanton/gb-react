@@ -31,6 +31,10 @@ export const navigates = [
 
 export function Header() {
     const isAuth = useSelector(selectAuth);
+    const activeLinkStyle = ({ isActive }) => ({
+        borderBottom: isActive ?
+            '2px solid #fff' : 'none'
+    });
 
 
     const handleLogout = async () => {
@@ -46,10 +50,7 @@ export function Header() {
                             <li key={item.id}>
                                 <NavLink
                                     to={item.to}
-                                    style={({ isActive }) => ({
-                                        borderBottom: isActive ?
-                                            '2px solid #fff' : 'none'
-                                    })}
+                                    style={activeLinkStyle}
                                 >
                                     {item.name}
                                 </NavLink>
@@ -62,17 +63,11 @@ export function Header() {
                         <NavLink
                             className={classes.header__login}
                             to={'login'}
-                            style={({ isActive }) => ({
-                                borderBottom: isActive ?
-                                    '2px solid #fff' : 'none'
-                            })}
+                            style={activeLinkStyle}
                         >Login</NavLink>
                         <NavLink
                             to={'registration'}
-                            style={({ isActive }) => ({
-                                borderBottom: isActive ?
-                                    '2px solid #fff' : 'none'
-                            })}
+                            style={activeLinkStyle}
                         >Registration</NavLink>
                     </>
                 )}

@@ -36,18 +36,3 @@ export const messageReducer = (state = initialState, action) => {
             return state;
     }
 }
-// const currentList = state.messageList[payload.chatName] || [];
-// return {
-//     ...state,
-//     messageList: {
-//         ...state.messageList,
-//         [payload.chatName]: [
-//             ...currentList,
-//             {
-//                 ...payload.text,
-//                 id: nanoid(),
-//             },
-
-//         ]
-//     },
-// }
